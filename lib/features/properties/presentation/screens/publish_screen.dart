@@ -320,7 +320,7 @@ class _PublishScreenState extends ConsumerState<PublishScreen> {
     // Submeter
     setState(() => _isSubmitting = true);
     try {
-      final useCase = await ref.read(publishPropertyUseCaseProvider.future);
+      final useCase = ref.read(publishPropertyUseCaseProvider);
       final property = Property(
         id: '',
         title: _titleCtrl.text.trim(),
