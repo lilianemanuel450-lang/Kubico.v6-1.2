@@ -1,7 +1,3 @@
-cd ~/kubico
-git add .github/workflows/build-apk.yml
-git commit -m "Add GitHub Actions APK build"
-git push
 name: Build APK Kubico
 
 on:
@@ -12,23 +8,23 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout código
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Instalar Java
+      - name: Java
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.27.0'
           channel: 'stable'
 
-      - name: Instalar dependências
+      - name: Dependencias
         run: flutter pub get
 
       - name: Build APK
@@ -39,4 +35,4 @@ jobs:
         with:
           name: kubico-apk
           path: build/app/outputs/flutter-apk/*.apk
-          retention-days: 7 
+          retention-days: 7
