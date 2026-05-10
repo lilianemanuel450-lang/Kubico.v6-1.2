@@ -23,8 +23,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Instalar Flu
-tter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.27.0'
@@ -41,4 +39,4 @@ tter
         with:
           name: kubico-apk
           path: build/app/outputs/flutter-apk/*.apk
-          retention-days: 
+          retention-days: 7 
