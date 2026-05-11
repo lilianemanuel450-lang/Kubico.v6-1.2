@@ -61,6 +61,7 @@ dependencies:
   path_provider: ^2.1.5
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.14.1
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
@@ -70,3 +71,8 @@ flutter:
   assets:
     - assets/images/
     - assets/lottie/
+
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: 'assets/images/IMG-20260211-WA0005.jpg'
