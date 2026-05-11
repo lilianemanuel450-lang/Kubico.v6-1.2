@@ -9,7 +9,7 @@ class AppConstants {
   // Podes usar variáveis de ambiente no Codemagic ou colocar directamente
   static const String supabaseUrl = String.fromEnvironment(
     'SUPABASE_URL',
-    defaultValue: 'https://SEU_PROJECTO.supabase.co',
+    defaultValue: 'https://homvogeaihfakcfxhqol.supabase.co',
   );
   static const String supabaseAnonKey = String.fromEnvironment(
     'SUPABASE_ANON_KEY',
