@@ -13,7 +13,7 @@ class AppConstants {
   );
   static const String supabaseAnonKey = String.fromEnvironment(
     'SUPABASE_ANON_KEY',
-    defaultValue: 'SUA_ANON_KEY_AQUI',
+    defaultValue: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvbXZvZ2VhaWhmYWtjZnhocW9sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MTg0NTgsImV4cCI6MjA5NDA5NDQ1OH0.Pl98Ov0Qly_F2CZF3CB8rab9WBiPL01f-LyBT6ztID0',
   );
 
   // Angola / Luanda
