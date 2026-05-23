@@ -4,8 +4,6 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../providers/auth_provider.dart';
 
-// ── Login Screen ───────────────────────────────────────────────────────────
-
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
@@ -44,29 +42,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   borderRadius: BorderRadius.circular(14),
                 ),
                 child: const Center(
-                  child: Text('K',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 28)),
+                  child: Text('K', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 28)),
                 ),
               ),
               const SizedBox(height: 24),
               const Text('Bem-vindo\nao Kubico',
-                  style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: AppTheme.textPrimary,
-                      height: 1.2)),
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppTheme.textPrimary, height: 1.2)),
               const SizedBox(height: 8),
               const Text('O melhor imobiliário de Angola',
                   style: TextStyle(color: AppTheme.textSecondary, fontSize: 16)),
               const SizedBox(height: 48),
               const Text('Número de telefone',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: AppTheme.textPrimary,
-                      fontSize: 14)),
+                  style: TextStyle(fontWeight: FontWeight.w600, color: AppTheme.textPrimary, fontSize: 14)),
               const SizedBox(height: 8),
               TextField(
                 controller: _phoneController,
@@ -78,8 +65,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
               if (authState.errorMessage != null) ...[
                 const SizedBox(height: 12),
-                Text(authState.errorMessage!,
-                    style: const TextStyle(color: AppTheme.error, fontSize: 13)),
+                Text(authState.errorMessage!, style: const TextStyle(color: AppTheme.error, fontSize: 13)),
               ],
               const SizedBox(height: 24),
               SizedBox(
@@ -87,11 +73,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 child: ElevatedButton(
                   onPressed: isLoading ? null : _sendOtp,
                   child: isLoading
-                      ? const SizedBox(
-                          height: 20,
-                          width: 20,
-                          child: CircularProgressIndicator(
-                              color: Colors.white, strokeWidth: 2))
+                      ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2))
                       : const Text('Receber código SMS'),
                 ),
               ),
@@ -99,7 +81,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(
-                  onPressed: () => context.go('/home'),
+                  onPressed: () {
+                    ref.read(authNotifierProvider.notifier).loginAsTest();
+                  },
                   style: OutlinedButton.styleFrom(
                     foregroundColor: AppTheme.textSecondary,
                     side: const BorderSide(color: AppTheme.textSecondary),
@@ -112,8 +96,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 child: Text(
                   'Ao continuar, aceitas os nossos\nTermos de Serviço e Política de Privacidade.',
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      color: AppTheme.textSecondary, fontSize: 12),
+                  style: const TextStyle(color: AppTheme.textSecondary, fontSize: 12),
                 ),
               ),
             ],
@@ -126,14 +109,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Future<void> _sendOtp() async {
     final phone = _phoneController.text.trim();
     if (phone.length < 10) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Insere um número válido')),
-      );
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Insere um número válido')));
       return;
     }
     await ref.read(authNotifierProvider.notifier).sendOtp(phone);
-    if (mounted &&
-        ref.read(authNotifierProvider).status != AuthStatus.error) {
+    if (mounted && ref.read(authNotifierProvider).status != AuthStatus.error) {
       context.push('/otp?phone=${Uri.encodeComponent(phone)}');
     }
   }

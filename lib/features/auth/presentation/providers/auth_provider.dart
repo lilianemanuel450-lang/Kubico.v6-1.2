@@ -2,20 +2,13 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-// ── Auth Entity ────────────────────────────────────────────────────────────
-
 class AppUser extends Equatable {
   final String id;
   final String phone;
   final String? name;
   final String? avatarUrl;
 
-  const AppUser({
-    required this.id,
-    required this.phone,
-    this.name,
-    this.avatarUrl,
-  });
+  const AppUser({required this.id, required this.phone, this.name, this.avatarUrl});
 
   factory AppUser.fromSupabase(User user) => AppUser(
     id: user.id,
@@ -28,8 +21,6 @@ class AppUser extends Equatable {
   List<Object?> get props => [id, phone, name, avatarUrl];
 }
 
-// ── Auth State ─────────────────────────────────────────────────────────────
-
 enum AuthStatus { initial, loading, authenticated, unauthenticated, error }
 
 class AuthState {
@@ -37,26 +28,16 @@ class AuthState {
   final AppUser? user;
   final String? errorMessage;
 
-  const AuthState({
-    this.status = AuthStatus.initial,
-    this.user,
-    this.errorMessage,
-  });
+  const AuthState({this.status = AuthStatus.initial, this.user, this.errorMessage});
 
   bool get isAuthenticated => status == AuthStatus.authenticated;
 
-  AuthState copyWith({
-    AuthStatus? status,
-    AppUser? user,
-    String? errorMessage,
-  }) => AuthState(
+  AuthState copyWith({AuthStatus? status, AppUser? user, String? errorMessage}) => AuthState(
     status: status ?? this.status,
     user: user ?? this.user,
     errorMessage: errorMessage ?? this.errorMessage,
   );
 }
-
-// ── Auth Notifier ──────────────────────────────────────────────────────────
 
 class AuthNotifier extends StateNotifier<AuthState> {
   AuthNotifier() : super(const AuthState()) {
@@ -72,7 +53,9 @@ class AuthNotifier extends StateNotifier<AuthState> {
           user: AppUser.fromSupabase(session.user),
         );
       } else {
-        state = const AuthState(status: AuthStatus.unauthenticated);
+        if (state.status != AuthStatus.authenticated) {
+          state = const AuthState(status: AuthStatus.unauthenticated);
+        }
       }
     });
 
@@ -85,6 +68,18 @@ class AuthNotifier extends StateNotifier<AuthState> {
     } else {
       state = const AuthState(status: AuthStatus.unauthenticated);
     }
+  }
+
+  // ── Modo de teste ──────────────────────────────────────────────────────
+  void loginAsTest() {
+    state = AuthState(
+      status: AuthStatus.authenticated,
+      user: const AppUser(
+        id: 'test-user-001',
+        phone: '+244949278004',
+        name: 'Utilizador Teste',
+      ),
+    );
   }
 
   Future<void> sendOtp(String phone) async {
@@ -116,10 +111,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
           user: AppUser.fromSupabase(response.user!),
         );
       } else {
-        state = state.copyWith(
-          status: AuthStatus.error,
-          errorMessage: 'Código inválido.',
-        );
+        state = state.copyWith(status: AuthStatus.error, errorMessage: 'Código inválido.');
       }
     } catch (e) {
       state = state.copyWith(
@@ -142,7 +134,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
   }
 }
 
-final authNotifierProvider =
-    StateNotifierProvider<AuthNotifier, AuthState>(
+final authNotifierProvider = StateNotifierProvider<AuthNotifier, AuthState>(
   (ref) => AuthNotifier(),
 );
