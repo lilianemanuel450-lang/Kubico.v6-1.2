@@ -97,14 +97,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             child: const Icon(Icons.home, color: Colors.white, size: 22),
           ),
           const SizedBox(width: 8),
-          Text(
-            'Kubico',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: AppTheme.primary,
-            ),
-          ),
+          Text('Kubico',
+              style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: AppTheme.primary)),
           const Spacer(),
           GestureDetector(
             onTap: () => context.push('/publish'),
@@ -138,10 +135,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Encontre sua casa ideal em Angola',
-            style: TextStyle(color: Color(0xFF888888), fontSize: 13),
-          ),
+          const Text('Encontre sua casa ideal em Angola',
+              style: TextStyle(color: Color(0xFF888888), fontSize: 13)),
           const SizedBox(height: 10),
           Container(
             decoration: BoxDecoration(
@@ -159,8 +154,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Pesquisar localização...',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFAAAAAA), fontSize: 14),
+                      hintStyle: TextStyle(color: Color(0xFFAAAAAA), fontSize: 14),
                       border: InputBorder.none,
                       isDense: true,
                       contentPadding: EdgeInsets.symmetric(vertical: 12),
@@ -171,19 +165,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   onTap: () => context.push('/search'),
                   child: Container(
                     margin: const EdgeInsets.all(6),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                     decoration: BoxDecoration(
                       border: Border.all(color: AppTheme.primary),
                       borderRadius: BorderRadius.circular(6),
                     ),
-                    child: Text(
-                      'Filtros >',
-                      style: TextStyle(
-                          color: AppTheme.primary,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600),
-                    ),
+                    child: Text('Filtros >',
+                        style: TextStyle(
+                            color: AppTheme.primary,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600)),
                   ),
                 ),
               ],
@@ -212,94 +203,36 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         borderRadius: BorderRadius.circular(16),
         child: Stack(
           children: [
-            // Fundo mapa
             Container(color: const Color(0xFFEAE6DC)),
-            // Oceano (esquerda)
             Positioned(
-              left: 0, top: 0, bottom: 0,
-              child: Container(
-                  width: 35,
-                  color: const Color(0xFFB8D4E8).withOpacity(0.7)),
-            ),
-            // Estradas horizontais
-            Positioned(
-              left: 35, right: 0, top: 70,
-              child: Container(
-                  height: 7,
-                  color: const Color(0xFFD4C9A8).withOpacity(0.8)),
-            ),
-            Positioned(
-              left: 35, right: 0, top: 110,
-              child: Container(
-                  height: 5,
-                  color: const Color(0xFFD4C9A8).withOpacity(0.6)),
-            ),
-            Positioned(
-              left: 35, right: 0, top: 150,
-              child: Container(
-                  height: 4,
-                  color: const Color(0xFFD4C9A8).withOpacity(0.5)),
-            ),
-            // Estradas verticais
-            Positioned(
-              left: 110, top: 0, bottom: 0,
-              child: Container(
-                  width: 6,
-                  color: const Color(0xFFD4C9A8).withOpacity(0.6)),
-            ),
-            Positioned(
-              left: 200, top: 0, bottom: 0,
-              child: Container(
-                  width: 4,
-                  color: const Color(0xFFD4C9A8).withOpacity(0.5)),
-            ),
-            Positioned(
-              left: 290, top: 0, bottom: 0,
-              child: Container(
-                  width: 4,
-                  color: const Color(0xFFD4C9A8).withOpacity(0.4)),
-            ),
-            // Bairros
-            const Positioned(
-              top: 18, left: 55,
-              child: Text('Luanda',
-                  style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF555555))),
-            ),
-            const Positioned(
-              top: 25, right: 35,
-              child: Text('Viana',
-                  style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF555555))),
-            ),
-            const Positioned(
-              bottom: 45, left: 55,
-              child: Text('Benfica',
-                  style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF555555))),
-            ),
-            const Positioned(
-              bottom: 25, right: 45,
-              child: Text('Talatona',
-                  style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF555555))),
-            ),
-            // Pins de imóveis
+                left: 0, top: 0, bottom: 0,
+                child: Container(width: 35, color: const Color(0xFFB8D4E8).withOpacity(0.7))),
+            Positioned(left: 35, right: 0, top: 70,
+                child: Container(height: 7, color: const Color(0xFFD4C9A8).withOpacity(0.8))),
+            Positioned(left: 35, right: 0, top: 110,
+                child: Container(height: 5, color: const Color(0xFFD4C9A8).withOpacity(0.6))),
+            Positioned(left: 35, right: 0, top: 150,
+                child: Container(height: 4, color: const Color(0xFFD4C9A8).withOpacity(0.5))),
+            Positioned(left: 110, top: 0, bottom: 0,
+                child: Container(width: 6, color: const Color(0xFFD4C9A8).withOpacity(0.6))),
+            Positioned(left: 200, top: 0, bottom: 0,
+                child: Container(width: 4, color: const Color(0xFFD4C9A8).withOpacity(0.5))),
+            Positioned(left: 290, top: 0, bottom: 0,
+                child: Container(width: 4, color: const Color(0xFFD4C9A8).withOpacity(0.4))),
+            const Positioned(top: 18, left: 55,
+                child: Text('Luanda', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF555555)))),
+            const Positioned(top: 25, right: 35,
+                child: Text('Viana', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF555555)))),
+            const Positioned(bottom: 45, left: 55,
+                child: Text('Benfica', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF555555)))),
+            const Positioned(bottom: 25, right: 45,
+                child: Text('Talatona', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF555555)))),
             _pin(top: 30, left: 70),
             _pin(top: 55, left: 140),
             _pin(top: 25, right: 90),
             _pin(bottom: 65, left: 90),
             _pin(bottom: 55, right: 70),
             _pin(top: 85, left: 55),
-            // Localização actual (ponto azul)
             Positioned(
               top: 82, left: 175,
               child: Container(
@@ -308,16 +241,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   shape: BoxShape.circle,
                   color: const Color(0xFF2196F3),
                   border: Border.all(color: Colors.white, width: 2.5),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.blue.withOpacity(0.4),
-                        blurRadius: 8,
-                        spreadRadius: 3)
-                  ],
+                  boxShadow: [BoxShadow(color: Colors.blue.withOpacity(0.4), blurRadius: 8, spreadRadius: 3)],
                 ),
               ),
             ),
-            // Botão localização
             Positioned(
               bottom: 10, right: 10,
               child: Container(
@@ -325,13 +252,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black.withOpacity(0.15), blurRadius: 4)
-                  ],
+                  boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.15), blurRadius: 4)],
                 ),
-                child: const Icon(Icons.my_location,
-                    size: 18, color: Color(0xFF555555)),
+                child: const Icon(Icons.my_location, size: 18, color: Color(0xFF555555)),
               ),
             ),
           ],
@@ -340,8 +263,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Widget _pin(
-      {double? top, double? bottom, double? left, double? right}) {
+  Widget _pin({double? top, double? bottom, double? left, double? right}) {
     return Positioned(
       top: top, bottom: bottom, left: left, right: right,
       child: Container(
@@ -350,10 +272,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           color: AppTheme.primary,
           shape: BoxShape.circle,
           border: Border.all(color: Colors.white, width: 2),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black.withOpacity(0.25), blurRadius: 4)
-          ],
+          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 4)],
         ),
         child: const Icon(Icons.home, color: Colors.white, size: 15),
       ),
@@ -401,10 +320,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  SliverWidget _buildMockList() {
+  SliverList _buildMockList() {
     final type = _selectedTab == 0 ? 'rent' : 'sell';
-    final items =
-        _mockItems.where((m) => m['type'] == type).toList();
+    final items = _mockItems.where((m) => m['type'] == type).toList();
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, i) => Padding(
@@ -416,7 +334,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  SliverWidget _buildRealList(List<Property> properties) {
+  SliverList _buildRealList(List<Property> properties) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, i) => Padding(
@@ -434,18 +352,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
-          BoxShadow(
-              color: Colors.black.withOpacity(0.06),
-              blurRadius: 10,
-              offset: const Offset(0, 2))
+          BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 10, offset: const Offset(0, 2))
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(16)),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
             child: CachedNetworkImage(
               imageUrl: item['image']!,
               height: 180,
@@ -468,38 +382,27 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(item['title']!,
-                          style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF1A1A1A))),
+                          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xFF1A1A1A))),
                       const SizedBox(height: 2),
                       Row(
                         children: [
-                          Icon(Icons.location_on,
-                              size: 13, color: AppTheme.primary),
+                          Icon(Icons.location_on, size: 13, color: AppTheme.primary),
                           const SizedBox(width: 2),
                           Text(item['location']!,
-                              style: const TextStyle(
-                                  color: Color(0xFF888888), fontSize: 12)),
+                              style: const TextStyle(color: Color(0xFF888888), fontSize: 12)),
                         ],
                       ),
                     ],
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10, vertical: 6),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                   decoration: BoxDecoration(
                     color: AppTheme.primary.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Text(
-                    item['price']!,
-                    style: TextStyle(
-                        color: AppTheme.primary,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12),
-                  ),
+                  child: Text(item['price']!,
+                      style: TextStyle(color: AppTheme.primary, fontWeight: FontWeight.bold, fontSize: 12)),
                 ),
               ],
             ),
@@ -511,25 +414,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   Widget _realCard(Property property) {
     return GestureDetector(
-      onTap: () =>
-          context.push('/property/${property.id}', extra: property),
+      onTap: () => context.push('/property/${property.id}', extra: property),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
-            BoxShadow(
-                color: Colors.black.withOpacity(0.06),
-                blurRadius: 10,
-                offset: const Offset(0, 2))
+            BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 10, offset: const Offset(0, 2))
           ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(16)),
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
               child: CachedNetworkImage(
                 imageUrl: property.mainImage,
                 height: 180,
@@ -538,8 +436,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 errorWidget: (_, __, ___) => Container(
                   height: 180,
                   color: const Color(0xFFE0E0E0),
-                  child:
-                      const Icon(Icons.home, size: 48, color: Colors.grey),
+                  child: const Icon(Icons.home, size: 48, color: Colors.grey),
                 ),
               ),
             ),
@@ -553,44 +450,36 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(property.title,
-                            style: const TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF1A1A1A)),
+                            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xFF1A1A1A)),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis),
                         const SizedBox(height: 2),
                         Row(
                           children: [
-                            Icon(Icons.location_on,
-                                size: 13, color: AppTheme.primary),
+                            Icon(Icons.location_on, size: 13, color: AppTheme.primary),
                             const SizedBox(width: 2),
                             Text(property.neighborhood,
-                                style: const TextStyle(
-                                    color: Color(0xFF888888),
-                                    fontSize: 12)),
+                                style: const TextStyle(color: Color(0xFF888888), fontSize: 12)),
                           ],
                         ),
                       ],
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 6),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                     decoration: BoxDecoration(
                       color: AppTheme.primary.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Text(
-                      property.formattedPrice,
-                      style: TextStyle(
-                          color: AppTheme.primary,
-                          fontWeight: FontWeight.bold,
-             
-~~~mkdir -p ~/kubico/lib/features/profile/presentation/screens
-cat > ~/kubico/lib/features/profile/presentation/screens/profile_screen.dart << 'EOF'
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/theme/app_theme.dart';
-import '../../../auth/presentation/providers/auth_provider.dart';
-
+                    child: Text(property.formattedPrice,
+                        style: TextStyle(color: AppTheme.primary, fontWeight: FontWeight.bold, fontSize: 12)),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
