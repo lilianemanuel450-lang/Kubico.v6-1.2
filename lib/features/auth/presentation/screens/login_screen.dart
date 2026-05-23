@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../../core/theme/app_theme.dart';
 import '../providers/auth_provider.dart';
 
@@ -37,7 +36,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 40),
-              // Logo
               Container(
                 width: 56,
                 height: 56,
@@ -62,8 +60,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       height: 1.2)),
               const SizedBox(height: 8),
               const Text('O melhor imobiliário de Angola',
-                  style:
-                      TextStyle(color: AppTheme.textSecondary, fontSize: 16)),
+                  style: TextStyle(color: AppTheme.textSecondary, fontSize: 16)),
               const SizedBox(height: 48),
               const Text('Número de telefone',
                   style: TextStyle(
@@ -96,6 +93,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           child: CircularProgressIndicator(
                               color: Colors.white, strokeWidth: 2))
                       : const Text('Receber código SMS'),
+                ),
+              ),
+              const SizedBox(height: 12),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: () => context.go('/home'),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: AppTheme.textSecondary,
+                    side: const BorderSide(color: AppTheme.textSecondary),
+                  ),
+                  child: const Text('Entrar como teste'),
                 ),
               ),
               const SizedBox(height: 16),
