@@ -320,13 +320,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  SliverList _buildMockList() {
+  SliverGrid _buildMockList() {
     final type = _selectedTab == 0 ? 'rent' : 'sell';
     final items = _mockItems.where((m) => m['type'] == type).toList();
-    return SliverList(
+    return SliverGrid(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        childAspectRatio: 0.75,
+      ),
       delegate: SliverChildBuilderDelegate(
         (context, i) => Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+          padding: EdgeInsets.only(
+            left: i % 2 == 0 ? 16 : 0,
+            right: i % 2 == 1 ? 16 : 0,
+          ),
           child: _mockCard(items[i]),
         ),
         childCount: items.length,
@@ -334,11 +343,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  SliverList _buildRealList(List<Property> properties) {
-    return SliverList(
+  SliverGrid _buildRealList(List<Property> properties) {
+    return SliverGrid(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        childAspectRatio: 0.75,
+      ),
       delegate: SliverChildBuilderDelegate(
         (context, i) => Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+          padding: EdgeInsets.only(
+            left: i % 2 == 0 ? 16 : 0,
+            right: i % 2 == 1 ? 16 : 0,
+          ),
           child: _realCard(properties[i]),
         ),
         childCount: properties.length,
