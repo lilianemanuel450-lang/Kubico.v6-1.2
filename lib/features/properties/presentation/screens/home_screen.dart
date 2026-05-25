@@ -380,48 +380,35 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
             child: CachedNetworkImage(
               imageUrl: item['image']!,
-              height: 180,
+              height: 120,
               width: double.infinity,
               fit: BoxFit.cover,
               errorWidget: (_, __, ___) => Container(
-                height: 180,
+                height: 120,
                 color: const Color(0xFFE0E0E0),
                 child: const Icon(Icons.home, size: 48, color: Colors.grey),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(item['title']!,
-                          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xFF1A1A1A))),
-                      const SizedBox(height: 2),
-                      Row(
-                        children: [
-                          Icon(Icons.location_on, size: 13, color: AppTheme.primary),
-                          const SizedBox(width: 2),
-                          Text(item['location']!,
-                              style: const TextStyle(color: Color(0xFF888888), fontSize: 12)),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: AppTheme.primary.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(item['price']!,
-                      style: TextStyle(color: AppTheme.primary, fontWeight: FontWeight.bold, fontSize: 12)),
-                ),
+                Text(item['title']!,
+                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF1A1A1A)),
+                    maxLines: 1, overflow: TextOverflow.ellipsis),
+                const SizedBox(height: 3),
+                Row(children: [
+                  Icon(Icons.location_on, size: 11, color: AppTheme.primary),
+                  const SizedBox(width: 2),
+                  Expanded(child: Text(item['location']!,
+                      style: const TextStyle(color: Color(0xFF888888), fontSize: 11),
+                      maxLines: 1, overflow: TextOverflow.ellipsis)),
+                ]),
+                const SizedBox(height: 4),
+                Text(item['price']!,
+                    style: TextStyle(color: AppTheme.primary, fontWeight: FontWeight.bold, fontSize: 12)),
               ],
             ),
           ),
@@ -448,11 +435,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
               child: CachedNetworkImage(
                 imageUrl: property.mainImage,
-                height: 180,
+                height: 120,
                 width: double.infinity,
                 fit: BoxFit.cover,
                 errorWidget: (_, __, ___) => Container(
-                  height: 180,
+                  height: 120,
                   color: const Color(0xFFE0E0E0),
                   child: const Icon(Icons.home, size: 48, color: Colors.grey),
                 ),
