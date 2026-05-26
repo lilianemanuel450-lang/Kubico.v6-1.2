@@ -328,7 +328,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         crossAxisCount: 2,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
-        childAspectRatio: 0.75,
+        childAspectRatio: 0.85,
       ),
       delegate: SliverChildBuilderDelegate(
         (context, i) => Padding(
@@ -349,7 +349,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         crossAxisCount: 2,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
-        childAspectRatio: 0.75,
+        childAspectRatio: 0.85,
       ),
       delegate: SliverChildBuilderDelegate(
         (context, i) => Padding(
