@@ -75,4 +75,4 @@ flutter:
 flutter_launcher_icons:
   android: true
   ios: false
-  image_path: 'assets/images/IMG-20260211-WA0005.jpg'
+  image_path: assets/images/kubico_logo.png
