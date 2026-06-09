@@ -39,8 +39,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           Positioned.fill(
             child: FlutterMap(
               options: const MapOptions(
-                initialCenter: LatLng(-8.8390, 13.2894),
-                initialZoom: 11.5,
+                initialCenter: LatLng(-8.9000, 13.2500),
+                initialZoom: 12.5,
               ),
               children: [
                 TileLayer(
