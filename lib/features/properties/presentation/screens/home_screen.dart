@@ -40,7 +40,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             child: FlutterMap(
               options: const MapOptions(
                 initialCenter: LatLng(-8.9000, 13.2500),
-                initialZoom: 12.5,
+                initialZoom: 13.0,
               ),
               children: [
                 TileLayer(
