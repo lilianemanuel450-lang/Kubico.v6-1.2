@@ -51,16 +51,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   markers: _mockItems.map((item) {
                     return Marker(
                       point: LatLng(item['lat'] as double, item['lng'] as double),
-                      width: 40,
-                      height: 40,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: AppTheme.primary,
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 2.5),
-                          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 6)],
+                      width: 44,
+                      height: 54,
+                      child: CustomPaint(
+                        painter: _PinPainter(),
+                        child: const Padding(
+                          padding: EdgeInsets.only(bottom: 14),
+                          child: Icon(Icons.home, color: Colors.white, size: 18),
                         ),
-                        child: const Icon(Icons.home, color: Colors.white, size: 20),
                       ),
                     );
                   }).toList(),
@@ -376,4 +374,32 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
     );
   }
+}
+
+class _PinPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()..color = const Color(0xFF3DBE2A);
+    final borderPaint = Paint()
+      ..color = Colors.white
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.5;
+
+    final path = Path();
+    final w = size.width;
+    final h = size.height;
+
+    path.addOval(Rect.fromCircle(center: Offset(w / 2, w / 2), radius: w / 2 - 2));
+    path.moveTo(w / 2 - 8, h - 16);
+    path.lineTo(w / 2, h - 2);
+    path.lineTo(w / 2 + 8, h - 16);
+    path.close();
+
+    canvas.drawShadow(path, Colors.black.withOpacity(0.3), 3, false);
+    canvas.drawPath(path, paint);
+    canvas.drawOval(Rect.fromCircle(center: Offset(w / 2, w / 2), radius: w / 2 - 2), borderPaint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
