@@ -1,3 +1,4 @@
+import 'dart:ui' as ui;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -385,7 +386,7 @@ class _PinPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2.5;
 
-    final path = Path();
+    final path = ui.Path();
     final w = size.width;
     final h = size.height;
 
